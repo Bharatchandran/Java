@@ -5,12 +5,25 @@ class ExceptionHandling2 {
       eh.readFile();
     }   
     public void readFile(){
+        BufferedReader br = null;
         try{
-            BufferedReader br = new BufferedReader(new FileReader(new File("eh22.info")));
+            br = new BufferedReader(new FileReader(new File("eh2.txt")));
             System.out.println(br.readLine());
         }
         catch(IOException e) {
             System.out.println(e.getMessage()+"Exception MSG");
         }
+        finally{
+            if(br != null){
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println("Finaly Block Called!");
+        }
     } 
 }
+
+
